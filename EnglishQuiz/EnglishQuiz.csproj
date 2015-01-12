@@ -213,6 +213,7 @@
     <Content Include="GameApp\Britam\img\downtown.jpg" />
     <Content Include="GameApp\Britam\img\elevator.jpg" />
     <Content Include="GameApp\Britam\img\gasstation.jpg" />
+    <Content Include="GameApp\Britam\img\gokusen.jpg" />
     <Content Include="GameApp\Britam\img\hood.jpg" />
     <Content Include="GameApp\Britam\img\pants.jpg" />
     <Content Include="GameApp\Britam\img\parkinglot.jpg" />
