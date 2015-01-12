@@ -1,22 +1,30 @@
-"use strict";var app = angular.module("DialectApp", []);    app.controller("AppCtrl", ["$scope", "$http", "PairService",	function($scope, $http, PairService) {
-	    var tempPairs = [];
-	    $scope.pairs = [];
+"use strict";var app = angular.module("DialectApp", []);
+app.controller("AppCtrl", [
+    "$scope", "$http", "PairService",
+    function($scope, $http, PairService) {
+        $scope.isBusy = true;
+        var tempPairs = [];
+        $scope.pairs = [];
 
-	    $http.get("/api/gameApi/1/")
-	        .then(function(result) {
-	            //success
-	            angular.copy(result.data, tempPairs);
-	            console.log("The initial data is" + result.data);
-	            var shuffledPairs = PairService.getPairs(tempPairs);
-	            angular.copy(shuffledPairs, $scope.pairs);
-	            console.log("The shuffled data is" + $scope.pairs);
-	            initScopeValues($scope);
-	        },
-	            function () {
-	                // error
-	                alert("couldn't load data");
+        $http.get("/api/gameApi/1/")
+            .then(function(result) {
+                    //success
+                    angular.copy(result.data, tempPairs);
+                    console.log("The initial data is" + result.data);
+                    var shuffledPairs = PairService.getPairs(tempPairs);
+                    angular.copy(shuffledPairs, $scope.pairs);
+                    console.log("The shuffled data is" + $scope.pairs);
+                    initScopeValues($scope);
+                },
+                function() {
+                    // error
+                    alert("couldn't load data");
 
-	            });
+                })
+            .then(function () {
+                $scope.isBusy = false;
+            });
+        
 
 	    var initScopeValues = function ($scope) {
 	        $scope.title = "Is it British or American?";	        $scope.completed = 0;	        $scope.currentIndex = 0;	        $scope.total = $scope.pairs.length;	        $scope.numCorrect = 0;	        $scope.answered = false;	        $scope.correctlyAnsweredQuestion = false;	        $scope.wronglyAnsweredQuestion = false;	        $scope.rightMessage = "Good Job! That was the right answer.";

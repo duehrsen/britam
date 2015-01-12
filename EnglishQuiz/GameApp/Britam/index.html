@@ -5,8 +5,13 @@
     <title ng-bind="title"></title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body ng-controller="AppCtrl">
-<div style="max-width: 600px; padding-left: 10px">
+<body ng-controller="AppCtrl">
+
+<div class="progress progress-striped active" ng-show="isBusy">
+    
+    <div class="progress-bar" style="width: 100%">Loading...</div>
+</div>
+<div style="max-width: 600px; padding-left: 10px" class="container">
 
 <h1 style="color:blue" ng-bind="title"></h1>
     <table ng-repeat="pair in pairs | indexFilter: currentIndex" width="500">
