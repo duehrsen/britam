@@ -53,6 +53,8 @@ namespace EnglishQuiz.Models
                 Image = ""
             });
 
+
+
             questions.ForEach(q => context.Questions.Add(q));
             context.SaveChanges();
         }
